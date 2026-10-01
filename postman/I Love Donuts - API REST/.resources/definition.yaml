@@ -1,0 +1,7 @@
+$kind: collection
+description: CRUD de clientes, produtos e pedidos. Execute os POSTs antes das consultas e os DELETEs por último.
+variables:
+  baseUrl: http://localhost:8080
+  clienteId: ""
+  produtoId: ""
+  pedidoId: ""

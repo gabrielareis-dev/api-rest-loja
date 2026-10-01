@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/pedidos"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "clienteId": {{clienteId}},
+      "produtoId": {{produtoId}},
+      "quantidade": 3
+    }
+scripts:
+  - type: afterResponse
+    code: if (pm.response.code === 201) pm.collectionVariables.set('pedidoId', pm.response.json().id);
+    language: text/javascript
+order: 1000

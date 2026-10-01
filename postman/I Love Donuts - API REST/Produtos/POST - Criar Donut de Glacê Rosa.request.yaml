@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/produtos"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nome": "Donut de Glacê Rosa",
+      "preco": 8.50,
+      "estoque": true
+    }
+scripts:
+  - type: afterResponse
+    code: if (pm.response.code === 201) pm.collectionVariables.set('produtoId', pm.response.json().id);
+    language: text/javascript
+order: 1000

@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/clientes"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nome": "Gabriela Loura Falcão Reis 5174948",
+      "clienteDesde": "2026-09-30"
+    }
+scripts:
+  - type: afterResponse
+    code: if (pm.response.code === 201) pm.collectionVariables.set('clienteId', pm.response.json().id);
+    language: text/javascript
+order: 1000
